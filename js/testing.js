@@ -36,8 +36,14 @@
                  mainData = parsed.data;
                  $('.' + firstClass).empty();
                  if (pickedStyle == "full") {
-                     var imgUrl = mainData.images[0].image_url;
-                     $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeDescription">' + mainData.description + '</div><div class="placeImage"><img src="' + imgUrl + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+                        if (mainData.images[0]){
+                     var imgLoc = mainData.images[0].image_url;
+                    var imgUrl ='<img src="' + imgLoc + '">';
+                 }
+                 else {
+                    var imgUrl ="NO IMAGE AVAILABLE";
+                }
+                     $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeDescription">' + mainData.description + '</div><div class="placeImage">'+imgUrl+'</div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
                  } else if (pickedStyle == "lite") {
                      $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeDescription">' + mainData.description + '</div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
                  } else if (pickedStyle == "imgs") {
