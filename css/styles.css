@@ -2,7 +2,7 @@
 .placeImage img{
   max-width: 100%;
 }
-.imgBuff{
+img.imgBuff{
 	margin-left:10px;
 	max-width: 33%;
 }

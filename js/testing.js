@@ -9,9 +9,14 @@
  }
  loadcss('https://immense-brook-56331.herokuapp.com/css/styles.css');
  $(document).ready(function() {
-     $('.tomofull').each(function() {
-         var currClasses = $(this).prop("classList");
-         var currId = currClasses[1];
+     $('.tomo').each(function() {
+         var tomoClass = $(this).prop("classList");
+         var firstClass = tomoClass[1];
+var split = firstClass.split("-");
+
+var currId = split[0];
+var pickedStyle = split[1];
+console.log(pickedStyle)
          $.ajax({
              url: 'https://immense-brook-56331.herokuapp.com/php/fetch.php',
              type: 'POST',
@@ -22,46 +27,22 @@
              success: function(data) {
                  var parsed = $.parseJSON(data);
                  mainData = parsed.data;
-                 $('.' + currId).empty();
+                 $('.' + firstClass).empty();
+                 if (pickedStyle=="full"){
+           	console.log("full")
+
                  var imgUrl = mainData.images[0].image_url;
-                 $('.' + currId).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeDescription">' + mainData.description + '</div><div class="placeImage"><img src="' + imgUrl + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+                 $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeDescription">' + mainData.description + '</div><div class="placeImage"><img src="' + imgUrl + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
              }
-         });
-     });
-     $('.tomolite').each(function() {
-         var currClasses = $(this).prop("classList");
-         var currId = currClasses[1];
-         $.ajax({
-             url: 'https://immense-brook-56331.herokuapp.com/php/fetch.php',
-             type: 'POST',
-             dataType: 'JSON',
-             data: {
-                 callParam: ['GET', 'canonical_places/', currId, 'full']
-             },
-             success: function(data) {
-                // var parsed = $.parseJSON(data);
-                 mainData = data.data;
-                 $('.' + currId).empty();
-                 var imgUrl = mainData.images[0].image_url;
-                 $('.' + currId).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img src="' + imgUrl + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
-             }
-         });
-     });
-       $('.tomoimg').each(function() {
-         var currClasses = $(this).prop("classList");
-         var currId = currClasses[1];
-         $.ajax({
-             url: 'https://immense-brook-56331.herokuapp.com/php/fetch.php',
-             type: 'POST',
-             dataType: 'JSON',
-             data: {
-                 callParam: ['GET', 'canonical_places/', currId, 'full']
-             },
-             success: function(data) {
-                // var parsed = $.parseJSON(data);
-                 mainData = data.data;
-                 $('.' + currId).empty();
-                 if(mainData.images[0]){
+             else if (pickedStyle=="lite"){
+           	console.log("lite")
+
+             	 var imgUrl = mainData.images[0].image_url;
+                 $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img src="' + imgUrl + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+           }
+           else if(pickedStyle =="img"){
+           	console.log("img")
+           	if(mainData.images[0]){
                  var imgUrl1 = mainData.images[0].image_url;
 
                  }
@@ -71,13 +52,17 @@
                  }
                  if(mainData.images[2]){
                  var imgUrl3 = mainData.images[2].image_url;
-console.log("hi")
                  }
 
-                 $('.' + currId).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img class="imgBuff" src="' + imgUrl1 + '"><img class="imgBuff" src="' + imgUrl2 + '"><img class="imgBuff" src="' + imgUrl3 + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+                 $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img class="imgBuff" src="' + imgUrl1 + '"><img class="imgBuff" src="' + imgUrl2 + '"><img class="imgBuff" src="' + imgUrl3 + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+                 $('.' + firstClass).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img class="imgBuff" src="' + imgUrl1 + '"><img class="imgBuff" src="' + imgUrl2 + '"><img class="imgBuff" src="' + imgUrl3 + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+           
+           }
+             
              }
          });
      });
+
  });//ready
  /*jQueryCode = function(){
 
