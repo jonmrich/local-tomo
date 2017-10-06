@@ -1,25 +1,48 @@
+ /**
+ * Loads a CSS file from the supplied URL
+ * @param {String} url    The URL of the CSS file, if its relative
+                          it will be to the current page's url
+ * @return {HTMLElement}  The <link> which was appended to the <head>
+ */
 
-var tpcId;
-
+   var head = document.getElementsByTagName('head')[0],
+   link = document.createElement('link');
+   link.type = 'text/css';
+   link.rel = 'stylesheet';
+   link.href = 'https://immense-brook-56331.herokuapp.com/css/styles.css';
+   head.appendChild(link);
+   return link;
+ 
+ 
+ 
 
    $(document).ready(function() {
-	$('.12345').append("hello");
-	$('.67890').append("goodbye");
-	var currClasses = $(".tomo").prop("classList");
-	tpcId = currClasses[1];
+
+   $('.tomo').each(function () {
+
+      var currClasses = $(this).prop("classList");
+      console.log(currClasses)
+	 var currId = currClasses[1];
 
 	  $.ajax({
             url: 'https://immense-brook-56331.herokuapp.com/php/fetch.php',
             type: 'POST',
             dataType: '',
             data: {
-                callParam: ['GET','canonical_places/',tpcId,'full']
+                callParam: ['GET','canonical_places/',currId,'full']
             },
             success: function(data) {
-            	console.log(data)
+
+            	var parsed = $.parseJSON(data);
+                mainData = parsed.data;
+                $('.'+currId).empty(); 
+                var imgUrl = mainData.images[0].image_url;
+              
+            $('.'+currId).append('<div class="placeName">'+mainData.name+'</div><div class="placeDescription">'+mainData.description+'</div><div class="placeImage"><img src="'+imgUrl+'"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
+       
             }
         });
-
+});
 });
 
 
