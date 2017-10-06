@@ -6,6 +6,8 @@
 //code you've got? Need jquery or bootstrap?
 //run locally? we can package it up for download.
 
+//ready
+jQueryCode = function(){
  function loadcss(url) {
      var head = document.getElementsByTagName('head')[0],
          link = document.createElement('link');
@@ -61,9 +63,7 @@
              }
          });
      });
- }); //ready
- /*jQueryCode = function(){
-
+ }); 
  }
 
  if(window.jQuery)  jQueryCode();
@@ -74,4 +74,4 @@
      script.src = "//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";
 
      script.onload = jQueryCode;
- }*/
+ }
