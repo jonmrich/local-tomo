@@ -1,4 +1,5 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
 $callParam = $_POST["callParam"];
 require_once 'functions.php';
 $callType = $callParam[0];
