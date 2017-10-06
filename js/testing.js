@@ -4,17 +4,17 @@
                           it will be to the current page's url
  * @return {HTMLElement}  The <link> which was appended to the <head>
  */
-
+ function loadcss(url) {
    var head = document.getElementsByTagName('head')[0],
    link = document.createElement('link');
    link.type = 'text/css';
    link.rel = 'stylesheet';
-   link.href = 'https://immense-brook-56331.herokuapp.com/css/styles.css';
+   link.href = url;
    head.appendChild(link);
    return link;
+ }
  
- 
- 
+  loadcss('https://immense-brook-56331.herokuapp.com/css/styles.css');
 
    $(document).ready(function() {
 
