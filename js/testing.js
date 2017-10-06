@@ -18,7 +18,8 @@ jQueryCode = function(){
      return link;
  }
  //loadcss('https://immense-brook-56331.herokuapp.com/css/styles.css');
- $(document).ready(function() {
+ jQuery(document).ready(function($) {
+
      $('.tomo').each(function() {
          var tomoClass = $(this).prop("classList");
          var firstClass = tomoClass[1];
