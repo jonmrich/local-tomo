@@ -4,4 +4,9 @@
 }
 .imgBuff{
 	margin-left:10px;
+	max-width: 33%;
+}
+.placeImage,.placedescription,.tomoAttribution{
+	margin-top:15px;
+	margin-bottom:10px;
 }

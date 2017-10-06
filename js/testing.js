@@ -71,7 +71,7 @@
                  }
                  if(mainData.images[2]){
                  var imgUrl3 = mainData.images[2].image_url;
-
+console.log("hi")
                  }
 
                  $('.' + currId).append('<div class="placeName"><h3>' + mainData.name + '</h3></div><div class="placeImage"><img class="imgBuff" src="' + imgUrl1 + '"><img class="imgBuff" src="' + imgUrl2 + '"><img class="imgBuff" src="' + imgUrl3 + '"></div><div class="tomoAttribution">Powered by <a href="https://tomo.co">Tomo</a></div>');
