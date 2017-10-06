@@ -2,3 +2,6 @@
 .placeImage img{
   max-width: 100%;
 }
+.imgBuff{
+	margin-left:10px;
+}
