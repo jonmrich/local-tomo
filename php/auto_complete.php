@@ -1,4 +1,5 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
 
 $name       = $_POST["query"];
 $latitude 	= (float)$_POST["latitude"];
