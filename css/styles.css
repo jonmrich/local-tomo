@@ -3,10 +3,12 @@
   max-width: 100%;
 }
 img.imgBuff{
-	margin-left:10px;
-	max-width: 33%;
+  margin-left:3%;
+  max-width: 33%;
+  min-width: 30%;
+
 }
 .placeImage,.placedescription,.tomoAttribution{
-	margin-top:15px;
-	margin-bottom:10px;
+  margin-top:15px;
+  margin-bottom:10px;
 }
